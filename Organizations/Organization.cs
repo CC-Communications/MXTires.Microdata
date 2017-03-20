@@ -324,8 +324,20 @@ namespace MXTires.Microdata
         /// Organization - A relationship between two organizations where the first includes the second, e.g., as a subsidiary. 
         /// See also: the more specific 'department' property.
         /// </summary>
+        public Organization SubOrganization { set
+            {
+                SubOrganizations = SubOrganizations ?? new List<Organization>();
+                SubOrganizations.Add(value);
+            }
+        }
+
+        /// <summary>
+        /// Organization - A relationship between two organizations where the first includes the second, e.g., as a subsidiary. 
+        /// See also: the more specific 'department' property.
+        /// </summary>
         [JsonProperty("subOrganization")]
-        public Organization SubOrganization { get; set; }
+        public List<Organization> SubOrganizations { get; set; }
+
 
         /// <summary>
         /// Text - The Value-added Tax ID of the organization or person.

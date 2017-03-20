@@ -64,6 +64,20 @@ namespace MXTires.Microdata
         [JsonProperty("@id", NullValueHandling = NullValueHandling.Ignore)]
         public string Id { get; set; }
 
+
+        /// <summary>
+        /// URL 	An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. 
+        /// This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 
+        /// 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those 
+        /// defined externally.
+        /// </summary>
+        public string AdditionalType { set
+            {
+                AdditionalTypes = AdditionalTypes ?? new List<string>();
+                AdditionalTypes.Add(value);
+            }
+        }
+
         /// <summary>
         /// URL 	An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. 
         /// This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 
@@ -71,7 +85,7 @@ namespace MXTires.Microdata
         /// defined externally.
         /// </summary>
         [JsonProperty("additionalType")]
-        public string AdditionalType { get; set; }
+        public List<string> AdditionalTypes { get; set; }
 
         /// <summary>
         /// Text 	An alias for the item.
